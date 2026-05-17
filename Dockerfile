@@ -1,26 +1,25 @@
-FROM node:18 as base
-
-
-FROM base as development
+FROM node:20 AS base
 WORKDIR /app
-COPY package.json .
+
+
+FROM base AS development
+COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 4000
 CMD ["npm", "start"]
 
-FROM base as production
-WORKDIR /app
-COPY package.json .
-RUN npm install
+
+FROM base AS production
+COPY package*.json ./
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
 
 
-FROM base as test
-WORKDIR /app
-COPY package.json .
+FROM base AS test
+COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 5000

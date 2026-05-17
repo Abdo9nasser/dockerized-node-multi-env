@@ -34,3 +34,6 @@ app.get("/", (req, res) => {
 
 ## Notes
 Each environment has its own Docker Compose configuration with different ports and settings.
+## MongoDB Integration
+The project has been extended to include a MongoDB database running in a separate Docker container. The Node.js application connects to MongoDB using Docker internal networking.
+The Node.js container and MongoDB container communicate using a shared Docker network created by me and use the container name in connectin string 

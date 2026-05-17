@@ -3,3 +3,19 @@ services:
     container_name: node-app
     build:
       context: .
+    networks:
+      - app-network
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example 
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
