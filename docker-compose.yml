@@ -30,6 +30,24 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: mongoexpresspass
     networks:
       - app-network
+  redis:
+
+    image: redis
+    restart: always
+    networks:
+      - app-network  
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    restart: always
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-app
 networks:
   app-network:
     driver: bridge
