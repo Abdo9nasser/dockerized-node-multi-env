@@ -1,8 +1,7 @@
 services:
   node-app:
-    container_name: node-app
-    build:
-      context: .
+    image: abdelrahman9nasser/node-app:node
+
     networks:
       - app-network
     depends_on:

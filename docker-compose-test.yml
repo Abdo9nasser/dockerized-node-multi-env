@@ -1,8 +1,5 @@
 services:
   node-app:
-    build:
-      context: .
-      target: test
 
     ports:
       - "5000:3000"

@@ -1,8 +1,7 @@
 services:
   node-app:
-    build:
-      context: .
-      target: development
+
+    
 
     ports:
       - "4000:3000"
